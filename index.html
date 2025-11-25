@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce page</title>
+    <script>
+        //https://dummyjson.com/products
+
+        let url = "https://dummyjson.com/products";
+
+        fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            // data.products contains the array
+            const titles = data.products.map(p => p.title).join(", ");
+            document.getElementById("products").innerText = titles;
+        })
+        .catch(err => console.error(err));
+
+    </script>
+</head>
+<body>
+    <p id="products"></p>
+</body>
+</html>
