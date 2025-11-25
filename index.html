@@ -3,21 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Recipes</title>
+
+    <style>
+        .recipe-box {
+            width: 320px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px;
+            display: inline-block;
+            vertical-align: top;
+            background: #fff;
+            box-shadow: 0 0 12px rgba(0,0,0,0.1);
+            font-family: Arial, sans-serif;
+        }
+        .recipe-box img {
+            border-radius: 10px;
+        }
+        .recipe-box h3 {
+            margin-top: 0;
+        }
+    </style>
 
     <script>
-        fetch("https://dummyjson.com/products")
+        fetch("https://dummyjson.com/recipes")
         .then(data => data.json())
         .then(data => {
 
-            console.log(data);  // print all data in console
-
-            data.products.map(product => {
+            data.recipes.map(recipe => {
 
                 document.write(`
-                    <h3>${product.title}</h3>
-                    <p>Price: $${product.price}</p>
-                    <img src="${product.images[0]}" width="200"><br><br>
+                    <div class="recipe-box">
+                        <h3>${recipe.name}</h3>
+                        <p><b>Cuisine:</b> ${recipe.cuisine}</p>
+                        <img src="${recipe.image}" width="280">
+                    </div>
                 `);
 
             });
